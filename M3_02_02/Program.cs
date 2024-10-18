@@ -4,6 +4,11 @@ namespace BOOPM3_02_02
 {
     class Program
     {
+		class SecretMemberClub {
+			private string [] _members  = { "Harry Potter", "Darth Vader", "Fred Flintstone", "Frodo Baggins"};
+			public string this[int idx] => _members[idx];
+		}
+
 		class FoldedSentence
 		{
 			string[] words = "a default sentence".Split();
@@ -32,6 +37,19 @@ namespace BOOPM3_02_02
 		}
 		static void Main(string[] args)
         {
+			System.Console.WriteLine("\nExample SecretMemberClub");
+			var club = new SecretMemberClub();
+			System.Console.WriteLine(club[0]);
+			System.Console.WriteLine(club[1]);
+			System.Console.WriteLine(club[2]);
+			System.Console.WriteLine(club[3]);
+
+			//Ex 1:
+			//club._members = null;  //Not possibe
+			//club._members[0] = "Donald Duck"; //not possible
+			//club._members[0] = null; //not possible
+
+			System.Console.WriteLine("\nExample FoldedSentences");
 			var s1 = new FoldedSentence();
 			Console.WriteLine(s1.Length);   // 2
 			Console.WriteLine(s1[0]);       // (a, sentence)
@@ -46,6 +64,9 @@ namespace BOOPM3_02_02
 		}
 	}
 }
-//Excercises:
-//1.	Modify the code so in case of odd nr of words, the "folding word" is not repeated in the index.
-//		So, in above example s1[1] should only be "default" not "default default"
+//Excercises SecretMemberClub:
+//1. 	Make _members public and try the codelines above marked Ex1.
+//2. 	Make _members public, get only and try the codelines above marked Ex1.
+
+//Excercises FoldedSentence:
+//3.	Go through the code of FoldedSentence indexer with a debugger and understand how the folded sentence evolvs. 
